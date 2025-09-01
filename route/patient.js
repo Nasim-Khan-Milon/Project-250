@@ -7,6 +7,11 @@ router.get("/", (req, res) => {
     res.render("patient/patientHome");
 });
 
+//Apointment Route
+router.get("/appointment", (req, res) => {
+    res.render("patient/appointment");
+});
+
 
 
 
