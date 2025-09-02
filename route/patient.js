@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const Schedule = require("../models/schedules.js");
 
 
 //Home Route
-router.get("/", (req, res) => {
-    res.render("patient/patientHome");
+router.get("/", async (req, res) => {
+    const allSchedules = await Schedule.find({});
+    res.render("patient/patientHome", {allSchedules});
 });
 
 //Apointment Route

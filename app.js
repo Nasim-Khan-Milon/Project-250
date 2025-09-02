@@ -26,7 +26,7 @@ const port = 8080;
 
 app.use(express.urlencoded({extended: true}));
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/appointment";
+const MONGO_URL = "mongodb://127.0.0.1:27017/doctor_appointment_system";
 main()
   .then(() => {
     console.log("Connected to DB");

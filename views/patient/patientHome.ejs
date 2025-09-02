@@ -42,30 +42,29 @@
     <!-- Schedule Appointment -->
     <div class="container-fluid my-5">
         <div class="row justify-content-center">
-            <div class="col-lg-10 ">
+            <div class="col-lg-10">
                 <h3 class="fw-bold text-center mb-4">Schedule Appointment</h3>
                 <div class="row g-4">
 
-                    <div class="col-md-6">
-                        <div class="p-4 border border-primary rounded h-100">
-                            <h5 class="fw-semibold text-primary mb-3">🌅 Morning Shift</h5>
-                            <p>Available Date: <span class="fw-medium text-dark">27 July 2025</span></p>
-                            <p>Available Time: <span class="fw-medium text-dark">9:00 AM - 12:00 PM</span></p>
+                    <% for (let schedule of allSchedules) { %>
+                        <div class="col-md-6">
+                            <div class="p-4 border border-primary rounded h-100 shadow-sm">
+                                <h5 class="fw-semibold text-primary mb-3">
+                                    <%= schedule.day_of_week %>
+                                </h5>
+                                <p>
+                                    Available Time:
+                                    <span class="fw-medium text-dark">
+                                        <%= schedule.start_time %> - <%= schedule.end_time %>
+                                    </span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="p-4 border border-secondary rounded h-100">
-                            <h5 class="fw-semibold text-secondary mb-3">🌆 Evening Shift</h5>
-                            <p>Available Date: <span class="fw-medium text-dark">26 July 2025</span></p>
-                            <p>Available Time: <span class="fw-medium text-dark">5:00 PM - 8:00 PM</span></p>
-                        </div>
-                    </div>
+                        <% } %>
 
                 </div>
 
-                <form class="mt-4 text-center" method="get"
-                    action="/home/appointment">
+                <form class="mt-4 text-center" method="get" action="/home/appointment">
                     <button type="submit" class="btn btn-primary px-5">Book Appointment</button>
                 </form>
             </div>
