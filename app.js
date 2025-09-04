@@ -16,6 +16,7 @@ app.engine('ejs', ejsMate);
 
 
 const patient = require("./route/patient.js");
+const doctor = require("./route/doctor.js");
 
 
 //for use static file -> css and js file in public folder
@@ -38,7 +39,10 @@ async function main() {
 
 
 //For patient pages
-app.use("/home", patient);
+app.use("/patient/home", patient);
+
+//For doctor pages
+app.use("/doctor/dashboard", doctor);
 
 
 app.get("/", (req, res) => {

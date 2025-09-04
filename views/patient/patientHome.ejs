@@ -47,11 +47,14 @@
                 <div class="row g-4">
 
                     <% for (let schedule of allSchedules) { %>
+                        <% let dayName = new Date(schedule.date).toLocaleDateString('en-US', { weekday: 'long' }); %>
+                        <% let formattedDate = new Date(schedule.date).toLocaleDateString('en-US', { year: 'numeric',
+                        month: 'long', day: 'numeric' }); %>
+
                         <div class="col-md-6">
                             <div class="p-4 border border-primary rounded h-100 shadow-sm">
-                                <h5 class="fw-semibold text-primary mb-3">
-                                    <%= schedule.day_of_week %>
-                                </h5>
+                                <h5 class="fw-semibold text-primary mb-2"><%= dayName %></h5>
+                                <p class="mb-1">📅 Date: <span class="fw-medium text-dark"><%= formattedDate %></span></p>
                                 <p>
                                     Available Time:
                                     <span class="fw-medium text-dark">
@@ -64,7 +67,7 @@
 
                 </div>
 
-                <form class="mt-4 text-center" method="get" action="/home/appointment">
+                <form class="mt-4 text-center" method="get" action="/patient/home/appointment">
                     <button type="submit" class="btn btn-primary px-5">Book Appointment</button>
                 </form>
             </div>

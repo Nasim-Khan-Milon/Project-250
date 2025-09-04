@@ -1,0 +1,63 @@
+<% layout("/layouts/doctorBoilerplate") %>
+
+    <!-- Main Section -->
+    <main class="container my-5">
+
+        <!-- Add Availability -->
+        <section class="card shadow mb-4">
+            <div class="card-body">
+                <h2 class="h6 text-primary mb-3">Add New Availability Slot</h2>
+                <form class="row g-3">
+                    <div class="col-md-4">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" id="date" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" id="time" class="form-control" />
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Add Slot</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Existing Availability -->
+        <section class="card shadow">
+            <div class="card-body">
+                <h2 class="h6 text-primary mb-3">Your Available Slots</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover text-sm mb-0">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-07-27</td>
+                                <td>10:00 AM</td>
+                                <td>
+                                    <button class="btn btn-link btn-sm text-primary p-0 me-2">Edit</button>
+                                    <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-07-28</td>
+                                <td>02:00 PM</td>
+                                <td>
+                                    <button class="btn btn-link btn-sm text-primary p-0 me-2">Edit</button>
+                                    <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
