@@ -1,0 +1,50 @@
+<% layout("/layouts/doctorBoilerplate") %>
+
+<!-- Main Content -->
+    <main class="flex-grow-1 container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="h5 text-primary mb-3">My Patients</h2>
+
+                <!-- Patients Table -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover mb-0">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Last Visit</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Nasim Khan</td>
+                                <td>27</td>
+                                <td>Male</td>
+                                <td>2025-07-20</td>
+                                <td>
+                                    <a href="/doctor/dashboard/patients/patient-details" class="btn btn-primary btn-sm">View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Apu Rayhan</td>
+                                <td>34</td>
+                                <td>Male</td>
+                                <td>2025-07-18</td>
+                                <td>
+                                    <a href="/doctor/dashboard/patients/patient-details" class="btn btn-primary btn-sm">View</a>
+                                </td>
+                            </tr>
+                            <!-- More rows dynamically from backend -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>

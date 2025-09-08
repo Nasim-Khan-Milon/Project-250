@@ -1,0 +1,66 @@
+<% layout("/layouts/doctorBoilerplate") %>
+
+<!-- Edit Profile Section -->
+<main class="container py-5">
+    <div class="card card-custom mx-auto" style="max-width: 600px; padding: 20px;">
+        <div class="card-body">
+
+            <h2 class="text-center text-blue-800 fw-bold mb-4">Edit Profile</h2>
+
+            <form method="get" action="/doctor/dashboard/profile" enctype="multipart/form-data">
+
+                <!-- Profile Image Upload -->
+                <div class="d-flex flex-column align-items-center mb-4">
+                    <img src="https://www.doctorbangladesh.com/wp-content/uploads/2021/03/Dr.-Md.-Sirajur-Rahman-Sarwar-1.jpg"
+                        alt="Profile Image" class="rounded-circle profile-img mb-3">
+                    <input type="file" name="profileImage" class="form-control form-control-sm text-center" style="max-width: 200px;">
+                </div>
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-semibold">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" value="Dr. Md. Sirajur Rahman Sarwar" required>
+                </div>
+
+                <!-- Qualifications -->
+                <div class="mb-3">
+                    <label for="qualification" class="form-label fw-semibold">Qualifications</label>
+                    <input type="text" id="qualification" name="qualification" class="form-control" value="MBBS (DMC), BCS (Health), MD (Cardiology), FCPS (Final)" required>
+                </div>
+
+                <!-- Training -->
+                <div class="mb-3">
+                    <label for="training" class="form-label fw-semibold">Training</label>
+                    <textarea id="training" name="training" rows="2" class="form-control" required>Trained on Cardiology in Malaysia, Singapore, Thailand & India</textarea>
+                </div>
+
+                <!-- Specialist -->
+                <div class="mb-3">
+                    <label for="specialist" class="form-label fw-semibold">Specialist</label>
+                    <input type="text" id="specialist" name="specialist" class="form-control" value="Cardiology & Medicine Specialist" required>
+                </div>
+
+                <!-- Designation -->
+                <div class="mb-3">
+                    <label for="designation" class="form-label fw-semibold">Designation</label>
+                    <input type="text" id="designation" name="designation" class="form-control" value="Assistant Professor, Cardiology" required>
+                </div>
+
+                <!-- Institute -->
+                <div class="mb-3">
+                    <label for="institute" class="form-label fw-semibold">Institute</label>
+                    <input type="text" id="institute" name="institute" class="form-control" value="Sylhet MAG Osmani Medical College & Hospital" required>
+                </div>
+
+                <!-- Save Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5 py-2">Save Changes</button>
+                    <a href="/doctor/dashboard/profile" class="btn btn-secondary px-4 py-2 ms-2">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</main>
+
+
