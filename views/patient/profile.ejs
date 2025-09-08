@@ -1,0 +1,63 @@
+<% layout("/layouts/boilerplate") %>
+
+<!-- Main Content -->
+    <main class="flex-fill">
+
+        <!-- Profile Section -->
+        <section class="container my-5">
+            <div class="card shadow-sm rounded-4 p-4">
+                <div class="d-flex flex-column flex-md-row align-items-center gap-4">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Patient Photo"
+                        class="rounded-circle border border-4 border-primary" style="width:128px; height:128px;">
+                    <div>
+                        <h2 class="text-primary fw-bold fs-4">Nasim Khan Milon</h2>
+                        <p class="mb-1"><strong>Email:</strong> nasim@example.com</p>
+                        <p class="mb-1"><strong>Phone:</strong> +880123456789</p>
+                        <p class="mb-1"><strong>Gender:</strong> Male</p>
+                        <p class="mb-0"><strong>Date of Birth:</strong> Jan 10, 2001</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment History -->
+        <section class="container my-4">
+            <div class="card shadow-sm rounded-4 p-4">
+                <h3 class="text-primary fw-bold mb-3 fs-5">Appointment History</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-08-05</td>
+                                <td>5:30 PM</td>
+                                <td class="text-info fw-medium">In queue</td>
+                            </tr>
+                            <tr>
+                                <td>2025-07-20</td>
+                                <td>10:30 AM</td>
+                                <td class="text-success fw-medium">Confirmed</td>
+                            </tr>
+                            <tr>
+                                <td>2025-07-12</td>
+                                <td>5:00 PM</td>
+                                <td class="text-danger fw-medium">Cancelled</td>
+                            </tr>
+                            <tr>
+                                <td>2025-06-30</td>
+                                <td>9:00 AM</td>
+                                <td class="text-secondary fw-medium">Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>

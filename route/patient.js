@@ -19,6 +19,11 @@ router.get("/contact", (req, res) => {
     res.render("patient/contact");
 });
 
+//Paftient Profile Route
+router.get("/profile", (req, res) => {
+    res.render("patient/profile");
+});
+
 //Log In Route
 router.get("/login", (req, res) => {
     res.render("patient/login");
