@@ -14,6 +14,26 @@ router.get("/appointment", (req, res) => {
     res.render("patient/appointment");
 });
 
+//Contact Route
+router.get("/contact", (req, res) => {
+    res.render("patient/contact");
+});
+
+//Log In Route
+router.get("/login", (req, res) => {
+    res.render("patient/login");
+});
+
+//Sing Up Route
+router.get("/signup", (req, res) => {
+    res.render("patient/signup");
+});
+
+// Forgot Password Route
+router.get("/forgotPassword", (req, res) => {
+    res.render("patient/forgotPassword");
+});
+
 
 
 
