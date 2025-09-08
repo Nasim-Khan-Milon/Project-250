@@ -14,6 +14,12 @@ router.get("/appointment", (req, res) => {
     res.render("patient/appointment");
 });
 
+//Apointment Submited Route
+router.get("/submited-appointment", (req, res) => {
+    const { name } = req.query;
+    res.render("patient/submited-appointment", { name });
+});
+
 //Contact Route
 router.get("/contact", (req, res) => {
     res.render("patient/contact");
