@@ -14,6 +14,10 @@ const ejsMate = require("ejs-mate");
 // use ejs-locals for all ejs templates:
 app.engine('ejs', ejsMate);
 
+//For Edit and Delete use Method Override
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'))
+
 
 const patient = require("./route/patient.js");
 const doctor = require("./route/doctor.js");

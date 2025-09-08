@@ -54,8 +54,9 @@
                                             <td><%= dayName %></td>
                                             <td><%= schedule.start_time %> - <%= schedule.end_time %></td>
                                             <td>
-                                                <button class="btn btn-link btn-sm text-primary p-0 me-2">Edit</button>
-                                                <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
+                                                <form method="post" action="/doctor/dashboard/availability/<%= schedule._id %>?_method=DELETE">
+                                                    <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <% } %>

@@ -20,4 +20,11 @@ router.post("/availability", async(req, res) => {
     res.redirect("/doctor/dashboard/availability");
 });
 
+//Delete route to delete Schedules
+router.delete("/availability/:id", async (req, res) => {
+    const { id } = req.params;
+    await Schedule.findByIdAndDelete(id);
+    res.redirect("/doctor/dashboard/availability");
+});
+
 module.exports = router;
