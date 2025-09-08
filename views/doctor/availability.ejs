@@ -7,14 +7,18 @@
         <section class="card shadow mb-4">
             <div class="card-body">
                 <h2 class="h6 text-primary mb-3">Add New Availability Slot</h2>
-                <form class="row g-3">
+                <form class="row g-3" method="post" action="/doctor/dashboard/availability">
                     <div class="col-md-4">
                         <label for="date" class="form-label">Date</label>
-                        <input type="date" id="date" class="form-control" />
+                        <input type="date" id="date" class="form-control" name="schedules[date]" />
                     </div>
                     <div class="col-md-4">
-                        <label for="time" class="form-label">Time</label>
-                        <input type="time" id="time" class="form-control" />
+                        <label for="time" class="form-label">Start Time</label>
+                        <input type="string" id="time" class="form-control" name="schedules[start_time]" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="time" class="form-label">End Time</label>
+                        <input type="string" id="time" class="form-control" name="schedules[end_time]" />
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <button type="submit" class="btn btn-primary w-100">Add Slot</button>
@@ -32,28 +36,29 @@
                         <thead class="table-primary">
                             <tr>
                                 <th>Date</th>
+                                <th>Day</th>
                                 <th>Time</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2025-07-27</td>
-                                <td>10:00 AM</td>
-                                <td>
-                                    <button class="btn btn-link btn-sm text-primary p-0 me-2">Edit</button>
-                                    <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2025-07-28</td>
-                                <td>02:00 PM</td>
-                                <td>
-                                    <button class="btn btn-link btn-sm text-primary p-0 me-2">Edit</button>
-                                    <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows dynamically -->
+                            <% for (let schedule of allSchedules) { %>
+                                <% let dayName=new Date(schedule.date).toLocaleDateString('en-US', { weekday: 'long' });
+                                    %>
+                                    <% let formattedDate=new Date(schedule.date).toLocaleDateString('en-US', {
+                                        year: 'numeric' , month: 'long' , day: 'numeric' }); %>
+                                        <tr>
+                                            <td>
+                                                <%= formattedDate %>
+                                            </td>
+                                            <td><%= dayName %></td>
+                                            <td><%= schedule.start_time %> - <%= schedule.end_time %></td>
+                                            <td>
+                                                <button class="btn btn-link btn-sm text-primary p-0 me-2">Edit</button>
+                                                <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <% } %>
                         </tbody>
                     </table>
                 </div>
