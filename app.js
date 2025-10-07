@@ -21,6 +21,7 @@ app.use(methodOverride('_method'))
 
 const patient = require("./route/patient.js");
 const doctor = require("./route/doctor.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 
 //for use static file -> css and js file in public folder
@@ -51,6 +52,16 @@ app.use("/doctor/dashboard", doctor);
 
 app.get("/", (req, res) => {
     res.send("Hi, I am root");
+});
+
+
+app.use((req, res, next) => {
+  next(new ExpressError(400, "Page not found"));
+});
+
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "Something went wrong!" } = err;
+  res.status(statusCode).render("patient/error.ejs", {message});
 });
 
 app.listen(port, () => {

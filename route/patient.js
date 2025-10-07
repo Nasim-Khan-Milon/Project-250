@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Schedule = require("../models/schedules.js");
-const Apointment = require("../models/appointments.js");
-const appointments = require("../models/appointments.js");
+const Appointment = require("../models/appointments.js");
+const wrapAsync = require("../utils/wrapAsync.js");
+
 
 
 //Home Route
@@ -11,21 +12,25 @@ router.get("/", async (req, res) => {
     res.render("patient/patientHome", {allSchedules});
 });
 
-//Apointment Post Route
-router.post("/appointment", async (req, res) => {
+//Appointment Post Route
+router.post("/appointment", wrapAsync( async (req, res) => {
+    if(!req.body.scheduleId){
+        throw new ExpressError(400, "Send validate data for appointment");
+    }
+    
     const {scheduleId} = req.body;
     const schedule = await Schedule.findById(scheduleId);
     const { date, shift } = schedule;
-    let newAppointment = await new Apointment({date, shift});
+    let newAppointment = await new Appointment({date, shift});
     await newAppointment.save();
     res.redirect("/patient/home");
-});
+}));
 
-//Apointment Submited Route
-router.get("/submited-appointment", (req, res) => {
+//Appointment Submited Route
+router.get("/submited-appointment", wrapAsync( (req, res) => {
     const { name } = req.query;
     res.render("patient/submited-appointment", { name });
-});
+}));
 
 //Contact Route
 router.get("/contact", (req, res) => {
