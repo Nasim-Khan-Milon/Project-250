@@ -7,14 +7,24 @@
         <section class="card shadow mb-4">
             <div class="card-body">
                 <h2 class="h6 text-primary mb-3">Add New Availability Slot</h2>
-                <form class="row g-3" method="post" action="/doctor/dashboard/availability">
+                <form method="post" action="/doctor/dashboard/availability" class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4">
                         <label for="date" class="form-label">Date</label>
-                        <input type="date" id="date" class="form-control" name="schedules[date]" />
+                        <input type="date" id="date" class="form-control" name="schedules[date]" required />
+                        <div class="invalid-feedback">
+                            Please set a date.
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <label for="shift" class="form-label">Shift</label>
-                        <input type="string" id="shift" class="form-control" name="schedules[shift]" />
+                        <select id="shift" class="form-control" name="schedules[shift]" required>
+                            <option value="">Select shift</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Evening">Evening</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please choose a shift.
+                        </div>
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <button type="submit" class="btn btn-primary w-100">Add Slot</button>
@@ -48,18 +58,24 @@
                                             <td>
                                                 <%= formattedDate %>
                                             </td>
-                                            <td><%= dayName %></td>
-                                            <td><%= schedule.shift %></td>
-                                            <% if(schedule.shift =="Morning") {%>
-                                            <td>9:00 AM - 12:00 PM</td>
-                                            <% } else {%>
-                                                <td>3:00 PM - 8:00 PM </td>
-                                            <% } %>
                                             <td>
-                                                <form method="post" action="/doctor/dashboard/availability/<%= schedule._id %>?_method=DELETE">
-                                                    <button class="btn btn-link btn-sm text-danger p-0">Delete</button>
-                                                </form>
+                                                <%= dayName %>
                                             </td>
+                                            <td>
+                                                <%= schedule.shift %>
+                                            </td>
+                                            <% if(schedule.shift=="Morning" ) {%>
+                                                <td>9:00 AM - 12:00 PM</td>
+                                                <% } else {%>
+                                                    <td>3:00 PM - 8:00 PM </td>
+                                                    <% } %>
+                                                        <td>
+                                                            <form method="post"
+                                                                action="/doctor/dashboard/availability/<%= schedule._id %>?_method=DELETE">
+                                                                <button
+                                                                    class="btn btn-link btn-sm text-danger p-0">Delete</button>
+                                                            </form>
+                                                        </td>
                                         </tr>
                                         <% } %>
                         </tbody>

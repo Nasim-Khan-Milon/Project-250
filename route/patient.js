@@ -3,22 +3,25 @@ const router = express.Router();
 const Schedule = require("../models/schedules.js");
 const Appointment = require("../models/appointments.js");
 const wrapAsync = require("../utils/wrapAsync.js");
+const { validateAppointment } = require("../middleware.js");
 
 
 
 //Home Route
 router.get("/", async (req, res) => {
+    const today = new Date();
+    // Delete schedules where date is in the past
+    await Schedule.deleteMany({ date: { $lte: today } });
     const allSchedules = await Schedule.find({});
     res.render("patient/patientHome", {allSchedules});
 });
 
 //Appointment Post Route
-router.post("/appointment", wrapAsync( async (req, res) => {
-    if(!req.body.scheduleId){
+router.post("/appointment", validateAppointment, wrapAsync( async (req, res) => {
+    const {scheduleId} = req.body;
+    if(!scheduleId){
         throw new ExpressError(400, "Send validate data for appointment");
     }
-    
-    const {scheduleId} = req.body;
     const schedule = await Schedule.findById(scheduleId);
     const { date, shift } = schedule;
     let newAppointment = await new Appointment({date, shift});
