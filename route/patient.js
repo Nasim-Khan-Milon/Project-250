@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Schedule = require("../models/schedules.js");
+const Apointment = require("../models/appointments.js");
+const appointments = require("../models/appointments.js");
 
 
 //Home Route
@@ -9,9 +11,14 @@ router.get("/", async (req, res) => {
     res.render("patient/patientHome", {allSchedules});
 });
 
-//Apointment Route
-router.get("/appointment", (req, res) => {
-    res.render("patient/appointment");
+//Apointment Post Route
+router.post("/appointment", async (req, res) => {
+    const {scheduleId} = req.body;
+    const schedule = await Schedule.findById(scheduleId);
+    const { date, shift } = schedule;
+    let newAppointment = await new Apointment({date, shift});
+    await newAppointment.save();
+    res.redirect("/patient/home");
 });
 
 //Apointment Submited Route

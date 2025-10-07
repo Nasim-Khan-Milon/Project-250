@@ -13,12 +13,8 @@
                         <input type="date" id="date" class="form-control" name="schedules[date]" />
                     </div>
                     <div class="col-md-4">
-                        <label for="time" class="form-label">Start Time</label>
-                        <input type="string" id="time" class="form-control" name="schedules[start_time]" />
-                    </div>
-                    <div class="col-md-4">
-                        <label for="time" class="form-label">End Time</label>
-                        <input type="string" id="time" class="form-control" name="schedules[end_time]" />
+                        <label for="shift" class="form-label">Shift</label>
+                        <input type="string" id="shift" class="form-control" name="schedules[shift]" />
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <button type="submit" class="btn btn-primary w-100">Add Slot</button>
@@ -37,6 +33,7 @@
                             <tr>
                                 <th>Date</th>
                                 <th>Day</th>
+                                <th>Shift</th>
                                 <th>Time</th>
                                 <th>Actions</th>
                             </tr>
@@ -52,7 +49,12 @@
                                                 <%= formattedDate %>
                                             </td>
                                             <td><%= dayName %></td>
-                                            <td><%= schedule.start_time %> - <%= schedule.end_time %></td>
+                                            <td><%= schedule.shift %></td>
+                                            <% if(schedule.shift =="Morning") {%>
+                                            <td>9:00 AM - 12:00 PM</td>
+                                            <% } else {%>
+                                                <td>3:00 PM - 8:00 PM </td>
+                                            <% } %>
                                             <td>
                                                 <form method="post" action="/doctor/dashboard/availability/<%= schedule._id %>?_method=DELETE">
                                                     <button class="btn btn-link btn-sm text-danger p-0">Delete</button>

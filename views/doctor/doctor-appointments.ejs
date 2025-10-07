@@ -1,6 +1,6 @@
 <% layout("/layouts/doctorBoilerplate") %>
 
-<!-- Main Content -->
+    <!-- Main Content -->
     <main class="container my-5">
         <div class="card shadow-sm">
             <div class="card-body">
@@ -11,36 +11,42 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-primary">
                             <tr>
-                                <th>#</th>
                                 <th>Patient Name</th>
                                 <th>Date</th>
+                                <th>Day</th>
+                                <th>Shift</th>
                                 <th>Time</th>
-                                <th>Problem</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Nasim Khan</td>
-                                <td>2025-07-30</td>
-                                <td>10:30 AM</td>
-                                <td>Chest Pain</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Mark as Seen</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Anika Rahman</td>
-                                <td>2025-07-30</td>
-                                <td>11:00 AM</td>
-                                <td>High BP</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Mark as Seen</button>
-                                </td>
-                            </tr>
-                            <!-- More rows can be dynamically added from backend -->
+                            <% for(appointment of allAppointment) {%>
+                                <% if(appointment.status=="Confirmed" ) { %>
+                                    <% let dayName=new Date(appointment.date).toLocaleDateString('en-US', {
+                                        weekday: 'long' }); %>
+                                        <% let formattedDate=new Date(appointment.date).toLocaleDateString('en-US', {
+                                            year: 'numeric' , month: 'long' , day: 'numeric' }); %>
+                                            <tr>
+                                                <td>Nasim Khan</td>
+                                                <td>
+                                                    <%= formattedDate %>
+                                                </td>
+                                                <td>
+                                                    <%= dayName %>
+                                                </td>
+                                                <td>
+                                                    <%= appointment.shift %>
+                                                </td>
+                                                <td>9:30 AM - 12:00 PM</td>
+                                                <td>
+                                                    <form method="POST"
+                                                        action="/doctor/dashboard/appointment/<%= appointment._id %>/seen">
+                                                        <button type="submit" class="btn btn-success btn-sm">Mark as Seen</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                <% } %>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>

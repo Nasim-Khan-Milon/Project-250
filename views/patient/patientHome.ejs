@@ -3,19 +3,24 @@
     <!-- Main content -->
     <div class="container-fluid my-5">
         <div class="row g-4 justify-content-center">
-
             <!-- Sidebar -->
             <aside class="col-lg-3 offset-lg-1 text-center">
                 <img src="https://www.doctorbangladesh.com/wp-content/uploads/2021/03/Dr.-Md.-Sirajur-Rahman-Sarwar-1.jpg"
-                    alt="Doctor" class="rounded-circle border border-primary mb-3" width="120" height="120">
+                    alt="Doctor" class="rounded-circle border border-primary mb-3" width="120" height="120" />
                 <h5 class="fw-bold text-primary">Dr. Md. Sirajur Rahman Sarwar</h5>
-                <p class="text-muted small mb-3">MBBS (DMC), BCS (Health), MD (Cardiology), FCPS (Final)</p>
+                <p class="text-muted small mb-3">
+                    MBBS (DMC), BCS (Health), MD (Cardiology), FCPS (Final)
+                </p>
 
                 <h6 class="fw-semibold">Training</h6>
-                <p class="small">Trained on Cardiology in Malaysia, Singapore, Thailand & India</p>
+                <p class="small">
+                    Trained on Cardiology in Malaysia, Singapore, Thailand & India
+                </p>
 
                 <h6 class="fw-semibold">Specialist</h6>
-                <p class="small text-danger fw-semibold">Cardiology & Medicine Specialist</p>
+                <p class="small text-danger fw-semibold">
+                    Cardiology & Medicine Specialist
+                </p>
 
                 <h6 class="fw-semibold">Designation</h6>
                 <p class="small fw-medium">Assistant Professor, Cardiology</p>
@@ -28,14 +33,14 @@
             <section class="col-lg-7 offset-lg-1">
                 <h3 class="fw-bold text-primary mb-2">🩺 Book Your Doctor Appointment</h3>
                 <p class="text-muted small">
-                    Get expert care from a trusted Cardiology & Medicine Specialist at your convenience.
+                    Get expert care from a trusted Cardiology & Medicine Specialist at your
+                    convenience.
                 </p>
                 <div class="mt-4">
                     <img src="https://www.interioracebd.com/images/eco-friendly-doctors-chamber-design.jpg"
-                        alt="Doctor Appointment" class="img-fluid rounded">
+                        alt="Doctor Appointment" class="img-fluid rounded" />
                 </div>
             </section>
-
         </div>
     </div>
 
@@ -45,31 +50,45 @@
             <div class="col-lg-10">
                 <h3 class="fw-bold text-center mb-4">Schedule Appointment</h3>
                 <div class="row g-4">
-
                     <% for (let schedule of allSchedules) { %>
-                        <% let dayName = new Date(schedule.date).toLocaleDateString('en-US', { weekday: 'long' }); %>
-                        <% let formattedDate = new Date(schedule.date).toLocaleDateString('en-US', { year: 'numeric',
-                        month: 'long', day: 'numeric' }); %>
+                        <% let dayName=new Date(schedule.date).toLocaleDateString('en-US', { weekday: 'long' }); %>
+                            <% let formattedDate=new Date(schedule.date).toLocaleDateString('en-US', { year: 'numeric' ,
+                                month: 'long' , day: 'numeric' }); %>
 
-                        <div class="col-md-6">
-                            <div class="p-4 border border-primary rounded h-100 shadow-sm">
-                                <h5 class="fw-semibold text-primary mb-2"><%= dayName %></h5>
-                                <p class="mb-1">📅 Date: <span class="fw-medium text-dark"><%= formattedDate %></span></p>
-                                <p>
-                                    Available Time:
-                                    <span class="fw-medium text-dark">
-                                        <%= schedule.start_time %> - <%= schedule.end_time %>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                        <% } %>
-
+                                <div class="col-md-6">
+                                    <form action="/patient/home/appointment" method="POST">
+                                        <div class="p-4 border border-primary rounded h-100 shadow-sm">
+                                            <h5 class="fw-semibold text-primary mb-2">
+                                                <%= dayName %>
+                                            </h5>
+                                            <p class="mb-1">
+                                                📅 <b>Date</b>:
+                                                <span class="fw-medium text-dark">
+                                                    <%= formattedDate %>
+                                                </span>
+                                            </p>
+                                            <p class="mb-3">
+                                                ⏰ <b>Shift</b>:
+                                                <span class="fw-medium text-dark">
+                                                    <%= schedule.shift %> 
+                                                    <% if(schedule.shift == "Morning") {%>
+                                                        (9:00 AM - 12:00 PM)
+                                                    <% } else {%>
+                                                        (3:00 AM - 8:00 PM)
+                                                    <% } %>
+                                                </span>
+                                            </p>
+                                            <input type="hidden" name="scheduleId" value="<%= schedule._id %>" />
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-sm btn-primary px-4">
+                                                    Book Now
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <% } %>
                 </div>
-
-                <form class="mt-4 text-center" method="get" action="/patient/home/appointment">
-                    <button type="submit" class="btn btn-primary px-5">Book Appointment</button>
-                </form>
             </div>
         </div>
     </div>
@@ -82,17 +101,23 @@
                 <div class="col-md-4">
                     <div class="fs-2 mb-2">👨‍⚕️</div>
                     <h6 class="fw-semibold">Meet the Doctor</h6>
-                    <p class="small text-muted">Get to know Dr. Sarwar—your trusted heart & health expert.</p>
+                    <p class="small text-muted">
+                        Get to know Dr. Sarwar—your trusted heart & health expert.
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <div class="fs-2 mb-2">📅</div>
                     <h6 class="fw-semibold">Book Instantly</h6>
-                    <p class="small text-muted">Pick your preferred time and secure your appointment.</p>
+                    <p class="small text-muted">
+                        Pick your preferred time and secure your appointment.
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <div class="fs-2 mb-2">🔔</div>
                     <h6 class="fw-semibold">Get Reminders</h6>
-                    <p class="small text-muted">Receive alerts for upcoming visits and changes.</p>
+                    <p class="small text-muted">
+                        Receive alerts for upcoming visits and changes.
+                    </p>
                 </div>
             </div>
         </div>

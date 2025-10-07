@@ -5,14 +5,11 @@ const scheduleSchema = new mongoose.Schema({
         type: Date, 
         required: true 
     }, 
-    start_time: { 
+    shift: { 
         type: String, 
         required: true 
     },
-    end_time: { 
-        type: String, 
-        required: true 
-    }
+    
 });
 
 module.exports = mongoose.model("Schedule", scheduleSchema);
