@@ -20,7 +20,10 @@
 
     <%- include("../includes/navbar.ejs") %>
 
-        <div class="container flex-grow-1 container my-4"><%- body %></div>
+        <div class="container flex-grow-1 container my-4">
+            <%- include("../includes/flash.ejs") %>
+            <%- body %>
+        </div>
 
     <%- include("../includes/footer.ejs") %>
 

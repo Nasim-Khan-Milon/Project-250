@@ -26,6 +26,7 @@ router.post("/appointment", validateAppointment, wrapAsync( async (req, res) => 
     const { date, shift } = schedule;
     let newAppointment = await new Appointment({date, shift});
     await newAppointment.save();
+    req.flash("success", "Appointment successfully sumbited!");
     res.redirect("/patient/home");
 }));
 
